@@ -9,7 +9,7 @@ def prob1():
                 curr_cals = 0
             else:
                 line_value = int(line)
-                curr_cals = curr_cals + line_value
+                curr_cals += line_value
 
         print(f'Max Cals: {max_cals}')
 
@@ -23,7 +23,7 @@ def prob2():
                 curr_cals = 0
             else:
                 line_value = int(line)
-                curr_cals = curr_cals + line_value
+                curr_cals += line_value
 
         inventory.sort()
         top_cals = sum(inventory[-3:])
