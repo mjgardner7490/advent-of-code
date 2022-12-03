@@ -1,5 +1,5 @@
 def prob1(): 
-    with open('day1_input.txt','r') as file:
+    with open('d1_in.txt','r') as file:
         max_cals = 0
         curr_cals = 0
         for line in file:
@@ -14,7 +14,7 @@ def prob1():
         print(f'Max Cals: {max_cals}')
 
 def prob2():
-    with open('day1_input.txt','r') as file:
+    with open('d1_in.txt','r') as file:
         curr_cals = 0
         inventory = []
         for line in file:

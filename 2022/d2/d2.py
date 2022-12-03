@@ -15,7 +15,7 @@ strategy_guide = {
         ('C','Z'):3 + 3,
 }
 def prob1():
-    with open('day2_input.txt','r') as file:
+    with open('d2_in.txt','r') as file:
         score = 0
         for round in file:
             opp_play, my_play = round.split()
@@ -45,7 +45,7 @@ strategy_guide_2 = {
 }
 
 def prob2():
-    with open('day2_input.txt','r') as file:
+    with open('d2_in.txt','r') as file:
         score = 0
         for round in file:
             opp_play, my_play = round.split()
