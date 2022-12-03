@@ -8,9 +8,9 @@ def prob1():
         sum = 0
         for inventory in file:
             mid = len(inventory) >> 1
-            set1 = set(inventory[:mid].strip())
-            set2 = set(inventory[mid:].strip())
-            match = set1 & set2
+            compartment1 = set(inventory[:mid].strip())
+            compartment2 = set(inventory[mid:].strip())
+            match = compartment1 & compartment2
             sum += priority.index(match.pop()) + 1
         print(sum)
          
