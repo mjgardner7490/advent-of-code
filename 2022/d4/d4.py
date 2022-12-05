@@ -10,7 +10,6 @@ def prob1():
                 continue
             if (max1 >= max2) and (min1 <= min2):
                 count += 1
-                continue
         
         print(count)
 

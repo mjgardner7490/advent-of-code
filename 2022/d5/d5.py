@@ -1,5 +1,5 @@
 def create_stacks(lines: list[str]):
-    stack_num = len(lines.pop(-1)) -1
+    stack_num = len(lines.pop(-1)) - 1
     stacks = [[] for _ in range(stack_num)]
     for line in lines[::-1]:
         for i in range(1, len(line), 4):
@@ -19,18 +19,18 @@ def prob1():
                 break
         for line in lines[index+1:]:
             instructions = line.split()
-            new_stack = int(instructions[5]) - 1
-            old_stack = int(instructions[3]) - 1
+            new_stack = int(instructions[5])
+            old_stack = int(instructions[3])
             moves = int(instructions[1])
-            for i in range(moves):
-                stacks[new_stack].append(stacks[old_stack].pop())
+            for _ in range(moves):
+                stacks[new_stack-1].append(stacks[old_stack-1].pop())
         for stack in stacks:
             if stack:
                 print(stack[-1])
                 
 def prob2():
     with open('d5_in.txt','r') as file:
-        lines = file.readlines() 
+        lines = file.readlines()
         stacks = [[]]
         index = 0
         for i, line in enumerate(lines):
@@ -40,17 +40,15 @@ def prob2():
                 break
         for line in lines[index+1:]:
             instructions = line.split()
-            new_stack = int(instructions[5]) - 1
-            old_stack = int(instructions[3]) - 1
+            new_stack = int(instructions[5])
+            old_stack = int(instructions[3])
             moves = int(instructions[1])
 
-            stacks[new_stack] += stacks[old_stack][-moves:]
-            for i in range(moves):
-                stacks[old_stack].pop() 
+            stacks[new_stack-1] += stacks[old_stack-1][-moves:]
+            stacks[old_stack-1] = stacks[old_stack-1][:-moves]
         for stack in stacks:
             if stack:
                 print(stack[-1])
-
 
 
 prob1()
