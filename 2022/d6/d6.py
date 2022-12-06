@@ -1,40 +1,20 @@
 def prob1():
     with open('d6_in.txt','r') as file:
-        signal = file.readline()
-        marker = []
-        received = 0
-        for index, char in enumerate(signal):
-            if char not in marker:
-                marker.append(char)
-                if len(marker) == 4:
-                    received = index + 1
-                    break
-            else:
-                dup = marker.index(char)
-                marker = marker[dup+1:] 
-                marker.append(char)
-        print(received)
-
-
-
+        signal = file.readline().strip() 
+        for i in range(len(signal)):
+            marker = set(signal[i:i+4]) 
+            if len(marker) == 4:
+                print(i + 4)
+                break
 
 def prob2():
     with open('d6_in.txt','r') as file:
-        signal = file.readline()
-        marker = []
-        received = 0
-        print(signal)
-        for index, char in enumerate(signal):
-            if char not in marker:
-                marker.append(char)
-                if len(marker) == 14:
-                    received = index + 1
-                    break
-            else:
-                dup = marker.index(char)
-                marker = marker[dup+1:] 
-                marker.append(char)
-        print(received)
+        signal = file.readline().strip() 
+        for i in range(len(signal)):
+            marker = set(signal[i:i+14]) 
+            if len(marker) == 14:
+                print(i + 14)
+                break
 
 prob1()
 prob2()
