@@ -11,8 +11,8 @@ def prob2():
     with open('d6_in.txt','r') as file:
         signal = file.readline().strip() 
         for i in range(len(signal)):
-            marker = set(signal[i:i+14]) 
-            if len(marker) == 14:
+            message = set(signal[i:i+14]) 
+            if len(message) == 14:
                 print(i + 14)
                 break
 
