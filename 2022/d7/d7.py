@@ -1,5 +1,3 @@
-from pprint import pprint
-
 class Directory(object):
     def __init__(self, data, parent=None):
         self.data = data
@@ -19,16 +17,11 @@ class Directory(object):
     def is_leaf(self):
         return not self.children
 
-    def __str__(self):
-        if self.is_leaf():
-            return str(self.data)
-        return '{data} [{children}]'.format(data=self.data, children=', '.join(map(str, self.children)))
-
 def calc_stuff(tree, smalls):
     if tree.actual_size != 0:
         return tree.actual_size
 
-    if len(tree.children) == 0:
+    if tree.is_leaf():
         tree.actual_size = tree.size
         if tree.actual_size <= 100000:
             smalls.append(tree.actual_size)
@@ -62,7 +55,7 @@ def prob1():
             if options[0].isdigit():
                 tree.size += int(options[0])
 
-        while tree.parent != None:
+        while !tree.is_root():
             tree = tree.parent
         
         smalls = []
