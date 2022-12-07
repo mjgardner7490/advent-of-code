@@ -17,23 +17,21 @@ class Directory(object):
     def is_leaf(self):
         return not self.children
 
-def calc_dir_size(tree, small_files):
+def calc_dir_size(tree, small_directories):
     if tree.size != 0:
         return tree.size
-
     if tree.is_leaf():
         tree.size = tree.file_size
         if tree.size <= 100000:
-            small_files.append(tree.size)
+            small_directories.append(tree.size)
         return tree.size
     else:
         size = 0
         for child in tree.children:
-            size += calc_dir_size(child, small_files)
-        
+            size += calc_dir_size(child, small_directories)
         tree.size = tree.file_size + size
         if tree.size <= 100000:
-            small_files.append(tree.size)
+            small_directories.append(tree.size)
         return tree.size
     
 
@@ -58,15 +56,13 @@ def prob1():
         while not tree.is_root():
             tree = tree.parent
         
-        small_files = []
-        root_size = calc_dir_size(tree, small_files)
-        
-        print(sum(small_files)) 
+        small_directories = []
+        calc_dir_size(tree, small_directories)
+        print(sum(small_directories)) 
 
 def find_free_space(tree, free, needed):
     if tree.size >= needed:
         free.append(tree.size)
-    
     if not tree.is_leaf():
         for child in tree.children:
             find_free_space(child, free, needed)
@@ -97,11 +93,8 @@ def prob2():
         avail = 70000000 - root_size
         needed = 30000000 - avail
 
-        free = []
-        free.append(root_size)
-        
+        free = [root_size]
         find_free_space(tree, free, needed)
-        
         free.sort()
         print(free[0])
          
