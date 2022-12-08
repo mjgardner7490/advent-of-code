@@ -2,7 +2,7 @@
 
 YEAR=$(date +%Y)
 DAY=$(date +%d)
-DIR=$YEAR/$DAY
+DIR="$YEAR/d${DAY}"
 
 if [ "$1" != "-o" ] && [ -d $DIR ]; then
   echo "$DIR already setup. Use -o to overwrite."
