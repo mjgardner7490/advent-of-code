@@ -1,4 +1,3 @@
-from pprint import pprint
 def is_adjacent(xh, yh, xt, yt) -> bool:
     # On top of 
     if (xh == xt) and (yh == yt):
@@ -46,14 +45,14 @@ def move(xh, yh, xt, yt):
     if (yt - yh > 1) and (xh == xt):
         y = yh + 1
     
-    # right far & down
-    if (yh - yt == 1) and (xh - xt > 1): 
+    # right far & up/down
+    if (yh - yt == abs(1)) and (xh - xt > 1): 
         y = yh
         x = xh - 1
-    # right far & up
-    if (yt - yh == 1) and (xh - xt > 1): 
-        y = yh
-        x = xh - 1
+    # # right far & up
+    # if (yt - yh == 1) and (xh - xt > 1): 
+    #     y = yh
+    #     x = xh - 1
 
     # left far & down
     if (yh - yt == 1) and (xt - xh > 1): 
