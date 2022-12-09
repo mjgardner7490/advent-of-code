@@ -29,79 +29,54 @@ def is_adjacent(xh, yh, xt, yt) -> bool:
     return False
 
 def move(xh, yh, xt, yt):
-    x = xt
-    y = yt
-
     # Right
     if (xh - xt > 1) and (yh == yt):
-        x = xh - 1
+        xt = xh - 1
     # Left
     if (xt - xh > 1) and (yh == yt):
-        x = xh + 1
+        xt = xh + 1
     # Down
     if (yh - yt > 1) and (xh == xt):
-        y = yh - 1 
+        yt = yh - 1 
     # Up
     if (yt - yh > 1) and (xh == xt):
-        y = yh + 1
+        yt = yh + 1
     
     # right far & up/down
-    if (yh - yt == abs(1)) and (xh - xt > 1): 
-        y = yh
-        x = xh - 1
-    # # right far & up
-    # if (yt - yh == 1) and (xh - xt > 1): 
-    #     y = yh
-    #     x = xh - 1
-
-    # left far & down
-    if (yh - yt == 1) and (xt - xh > 1): 
-        y = yh
-        x = xh + 1
-    # left far & up
-    if (yt - yh == 1) and (xt - xh > 1): 
-        y = yh
-        x = xh + 1
-
-    # down far & right
-    if (yh - yt > 1) and (xh - xt == 1):
-        x = xh
-        y = yh - 1
-    # down far & left 
-    if (yh - yt > 1) and (xt - xh == 1):
-        x = xh
-        y = yh - 1
-
-    # up far & left 
-    if (yt - yh > 1) and (xt - xh == 1):
-        x = xh
-        y = yh + 1
-    # up far & right 
-    if (yt - yh > 1) and (xh - xt == 1):
-        x = xh
-        y = yh + 1
+    if (abs(yh - yt) == 1) and (xh - xt > 1): 
+        yt = yh
+        xt = xh - 1
+    # left far & up/down
+    if (abs(yh - yt) == 1) and (xt - xh > 1): 
+        yt = yh
+        xt = xh + 1
+    # down far & left/right
+    if (yh - yt > 1) and (abs(xh - xt) == 1):
+        xt = xh
+        yt = yh - 1
+    # up far & left/right
+    if (yt - yh > 1) and (abs(xt - xh) == 1):
+        xt = xh
+        yt = yh + 1
         
     # far up and far right
     if (yt - yh > 1) and (xh - xt > 1):
-        x = x + 1
-        y = y - 1
-
+        xt = xt + 1
+        yt = yt - 1
     # far up and far left
     if (yt - yh > 1) and (xt - xh > 1):
-        x = x - 1
-        y = y - 1
-
+        xt = xt - 1
+        yt = yt - 1
     # far down and far right
     if (yh - yt > 1) and (xh - xt > 1):
-        x = x + 1
-        y = y + 1
-
+        xt = xt + 1
+        yt = yt + 1
     # far down and far left
     if (yh - yt > 1) and (xt - xh > 1):
-        x = x - 1
-        y = y + 1
+        xt = xt - 1
+        yt = yt + 1
 
-    return x,y
+    return xt,yt
 
 def prob1():
     with open('d9_in.txt','r') as file:
