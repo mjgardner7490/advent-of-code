@@ -1,0 +1,37 @@
+def prob1():
+    with open('d15_in_test.txt', 'r') as file:  
+        s_map = {}
+        b_map = {}
+        for index, line in enumerate(file.readlines()):
+            data = line.strip().split() 
+            s_x = data[2][2:-1] 
+            s_y = data[3][2:-1]
+            b_x = data[-2][2:-1]
+            b_y = data[-1][2:]
+            s_map[index] = (int(s_x), int(s_y))
+            b_map[index] = (int(b_x), int(b_y))
+
+        # print(s_map)
+        # print(b_map)
+
+        row = 10
+        comp_list = []
+        for key, s_coords in s_map.items():
+            print('====')
+            # print('calc')
+            b_coords = b_map[key]
+            print(key)
+            print(f'scoords:{s_coords}')
+            print(f'bcoords:{b_coords}')
+            d = abs(s_coords[0] - b_coords[0]) + abs(s_coords[1] - b_coords[1])
+            if (s_coords[1] <= row <= s_coords[1] + d) or (s_coords[1] >= row >= s_coords[1] - d):
+                print(f'scoordy:{s_coords[1]}')
+                print(f'd:{d}')
+                print("here")
+                comp_list.append(key) 
+
+        print(comp_list)
+# 8,7 -> Sensor
+# 2,10 -> Beacon
+# Distance = abs(10-7) + abs(2-8) = 9
+prob1()
