@@ -1,0 +1,100 @@
+from collections import deque
+
+def prob1():
+    with open('d20_in_test.txt','r') as file:
+        init_list = []
+        for line in file.readlines():
+            init_list.append(int(line))
+        
+        d_list = init_list[:]
+        i_list = list(range(len(init_list)))
+        print(i_list)
+        print(f'initial list: {init_list}')
+        for index, number in enumerate(init_list):
+            print(f'number:{number}')
+            print(f'index:{index}')
+            i = d_list.index(number) 
+            print(f'i:{i}')
+            if number < 0:
+                for x in range(0, number, -1):
+                    num_i = (i+x) % len(d_list)
+                    num_swap_i = (i+x-1) % len(d_list)
+
+                    temp = d_list[num_swap_i]
+                    d_list[num_swap_i] = d_list[num_i]
+                    d_list[num_i] = temp
+                    print(d_list)
+            else:
+                for x in range(number):
+                    num_i = (i+x) % len(d_list)
+                    num_swap_i = (i+x+1) % len(d_list)
+                    
+                    i_list[index] += 1
+                    i_list[index+1+x] -= 1 
+
+                    temp = d_list[num_swap_i]
+                    d_list[num_swap_i] = d_list[num_i]
+                    d_list[num_i] = temp
+                    print(d_list)
+            print(f'i_list:{i_list}')
+            print('==============')
+
+
+        print(f'final list: {d_list}')
+        zero_i = d_list.index(0)
+        first = d_list[(zero_i + 1000) % len(d_list)]
+        second = d_list[(zero_i + 2000) % len(d_list)]
+        third = d_list[(zero_i + 3000) % len(d_list)]
+        print(first)
+        print(second)
+        print(third)
+        print(sum([first, second, third]))
+
+
+# def prob2():
+#     with open('d20_in.txt','r') as file:
+#         init_list = []
+#         for line in file.readlines():
+#             init_list.append(int(line))
+        
+#         d = deque(init_list)
+#         for number in init_list:
+#             i = d.index(number)
+#             if number < 0:
+#                 for x in range(0, number, -1):
+#                     # if ((i+x) % len(d)) == 0:
+#                     #     d.append(d.popleft())
+#                     #     i -= 1
+
+#                     num_i = (i+x) % len(d)
+#                     num_swap_i = (i+x-1) % len(d)
+
+#                     temp = d[num_swap_i]
+#                     d[num_swap_i] = d[num_i]
+#                     d[num_i] = temp
+#             else:
+#                 for x in range(number):
+#                     # if ((i+x) % len(d)) == len(d)-1:
+#                     #     d.appendleft(d.pop())
+#                     #     i += 1
+
+#                     num_i = (i+x) % len(d)
+#                     num_swap_i = (i+x+1) % len(d)
+
+#                     temp = d[num_swap_i]
+#                     d[num_swap_i] = d[num_i]
+#                     d[num_i] = temp
+
+#         print(f'final list: {d}')
+#         zero_i = d.index(0)
+#         first = d[(zero_i + 1000) % len(d)]
+#         second = d[(zero_i + 2000) % len(d)]
+#         third = d[(zero_i + 3000) % len(d)]
+#         print(first)
+#         print(second)
+#         print(third)
+#         print(sum([first, second, third]))
+                    
+
+
+prob1()
