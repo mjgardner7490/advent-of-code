@@ -8,14 +8,10 @@ def prob1():
         
         d_list = init_list[:]
         i_list = list(range(len(init_list)))
-        # print(i_list)
-        # print(f'initial list: {init_list}')
         for index, number in enumerate(init_list):
             print(f'number:{number}')
             print(f'index:{index}')
-            # i = d_list.index(number) 
             c_i = i_list[index]
-            # print(f'c_i:{c_i}')
             if number < 0:
                 for x in range(0, number, -1):
                     num_i = (c_i+x) % len(d_list)
@@ -60,9 +56,7 @@ def prob2():
             if (number) == 0:
                 unique_zero = (number, index)
         
-        # print(init_list)
         d_list = init_list[:]
-        # print(f'initial list: {init_list}')
         for _ in range(10):
             for number in init_list:
                 curr_index = d_list.index(number)
@@ -81,5 +75,5 @@ def prob2():
         print(sum([first, second, third]))
 
 
-# prob1()
+prob1()
 prob2()
